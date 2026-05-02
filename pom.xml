@@ -70,8 +70,8 @@
                 <version>3.2.5</version>
                 <configuration>
                     <systemPropertyVariables>
-                        <browser>${browser}</browser>
-                        <headless>${headless}</headless>
+                        <browser>chrome</browser>
+                        <headless>true</headless>
                         <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
                     </systemPropertyVariables>
                     <properties>
