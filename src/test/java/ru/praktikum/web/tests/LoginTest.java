@@ -1,13 +1,16 @@
 package ru.praktikum.web.tests;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.Assert;
 import org.junit.Test;
-
 import ru.praktikum.web.api.model.CreateUserRequest;
 
 public class LoginTest extends BaseUiTest {
 
     @Test
+    @DisplayName("Вход с главной")
+    @Description("Вход через кнопку на главной странице")
     public void shouldLoginFromMainPage() {
         CreateUserRequest user = createUserViaApi();
 
@@ -19,6 +22,8 @@ public class LoginTest extends BaseUiTest {
     }
 
     @Test
+    @DisplayName("Вход через кабинет")
+    @Description("Вход через кнопку личного кабинета")
     public void shouldLoginFromPersonalAccountButton() {
         CreateUserRequest user = createUserViaApi();
 
@@ -30,6 +35,8 @@ public class LoginTest extends BaseUiTest {
     }
 
     @Test
+    @DisplayName("Вход из регистрации")
+    @Description("Вход через ссылку из формы регистрации")
     public void shouldLoginFromRegistrationForm() {
         CreateUserRequest user = createUserViaApi();
 
@@ -39,10 +46,12 @@ public class LoginTest extends BaseUiTest {
         registerPage.clickLoginLink();
         loginViaUi(user);
 
-        Assert.assertTrue("После входа из формы регистрации должен открыться конструктор", mainPage.isConstructorPageOpened());
+        Assert.assertTrue("После входа регистрации должен открытся конструктор", mainPage.isConstructorPageOpened());
     }
 
     @Test
+    @DisplayName("Вход из восстановления")
+    @Description("Вход через ссылку из формы восстановления пароля")
     public void shouldLoginFromForgotPasswordForm() {
         CreateUserRequest user = createUserViaApi();
 
@@ -52,6 +61,6 @@ public class LoginTest extends BaseUiTest {
         forgotPasswordPage.clickLoginLink();
         loginViaUi(user);
 
-        Assert.assertTrue("После входа из формы восстановления пароля должен открыться конструктор", mainPage.isConstructorPageOpened());
+        Assert.assertTrue("После входа из формы восстановления пароля открывается конструктор", mainPage.isConstructorPageOpened());
     }
 }
